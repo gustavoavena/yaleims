@@ -81,7 +81,7 @@
            <!--print the symbol and the total score of each college in the table from the first-->
            {% for col in colleges %}
               
-                <tr><td>{{forloop.counter}}<a></a></td><td><a href="colleges.php?college= {{col.name}}"><img src="{{col.img_URL}}" style="width:70px;height:70px;" id="{{col.name}}" button></a></td><td align="center">{{col.total}}</a></td></tr>
+                <tr><td>{{forloop.counter}}<a></a></td><td><a href="/colleges?college={{col.name}}"><img src="{{col.img_URL}}" style="width:70px;height:70px;" id="{{col.name}}" button></a></td><td align="center">{{col.total}}</a></td></tr>
               
             {% endfor %}
           </tbody>

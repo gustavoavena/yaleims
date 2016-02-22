@@ -1,0 +1,33 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <img src="/img/colleges_pics/{{college.name}}.jpg" class="center-block img-responsive" style="width:800px;height:500px;">
+        <h1>{{college.get_name_display}}</h1>
+        <p>
+            {% include "colleges/{{college.name}}.html" %}
+        </p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <th style="text-align:center">Sport</th>
+              <th style="text-align:center">Score</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr><td align=center> Total </td><td align=center> {# stats.total#} </td></tr>
+            {#{% for sport in college.sports %}#}
+                  <!-- <tr><td align=center> {{sport.name}} </td><td align=center>  {{sport.value}}. </td></tr> -->
+            {#{% endfor %}#}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

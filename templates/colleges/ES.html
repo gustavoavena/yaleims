@@ -1,0 +1,4 @@
+<div>
+    Ezra Stiles College is named to honor the memory of Ezra Stiles, Yale Class of 1746, an eminent American theologian, lawyer, scientist, and philosopher, who served as the seventh President of Yale from 1778 to 1795.
+    <p>The distinguished historian Edmund Morgan characterized Ezra Stiles as follows: “Although he became the most learned man of his generation in America, he remained more interested in what he did not know than in what he did. New ideas swept him from infidelity to faith, from loyalty for Great Britain to pride in the United States, from conservative constitutionalism to radical democracy. He never stopped reaching for the next thought.”</p>
+</div>

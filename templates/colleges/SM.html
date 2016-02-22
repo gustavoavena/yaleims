@@ -1,0 +1,3 @@
+<div>
+    Silliman College opened in September 1940. It was the last of the original ten Yale residential colleges to be completed. The Vanderbilt-Sheffield dormitories and Byers Hall (now the Common Room, Dining Hall, Sillibrary, and Master’s and Dean’s Offices), dating from the early 1900s, were retained in the plans. All of the brick structures, including the Master’s House, were built between 1938 and 1940.
+</div>

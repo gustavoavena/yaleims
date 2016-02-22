@@ -1,0 +1,3 @@
+<div>
+    Jonathan Edwards College began during the academic year 1932-33 when Professor Robert Dudley French, the first Master, appointed eight members of the faculty to be the first fellows of the College. These men were chosen because they combined distinction in both teaching and scholarship, and because of their individuality and diversity of interests. As a corporate body they constituted the essential qualities of and intimate collegiate community, delighting in the pursuit of knowledge and in the vigorous exchange of ideas, not only among themselves, but with the undergraduates who joined them in the fall of 1933 when the college opened their doors.
+</div>

@@ -1,0 +1,3 @@
+<div>
+    Calhoun College was first established in 1933. Not long ago it underwent a beautiful renovation to make it a truly glorious residential college. With a little over 400 students, Calhoun is one of the smaller residential colleges, but don’t let that fool you. While its small size gives it a tight-knit community of “Hounies,” Calhoun’s central location and top-notch space definitely make it the place to be.
+</div>

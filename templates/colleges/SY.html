@@ -1,0 +1,3 @@
+<div>
+    Saybrook College, opened in 1933, shares the Memorial Quadrangle with Branford College. The Memorial Quadrangle, a gift of Mrs. Stephen V. Harkness in 1917, was then remodeled with funds provided by Mr. Edward S. Harkness, Class of 1897, to create a system of residential colleges, modeled after the Oxford and Cambridge college systems. Ten Yale residential colleges had opened by 1940; Morse and Ezra Stiles accepted their first students in 1962.
+</div>
