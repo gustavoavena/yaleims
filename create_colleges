@@ -1,0 +1,28 @@
+from scores.models import *
+
+BK = ResidentialCollege(name='BK', img_URL='https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Berkeleyshield.png/220px-Berkeleyshield.png', total=0)
+BR = ResidentialCollege(name='BR', img_URL='https://upload.wikimedia.org/wikipedia/en/3/30/Branford_College_shield.png', total=0)
+CC = ResidentialCollege(name='CC', img_URL='https://upload.wikimedia.org/wikipedia/en/c/ce/Calhoun_College_shield.png', total=0)
+DC = ResidentialCollege(name='DC', img_URL='https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Davenportshield.png/220px-Davenportshield.png', total=0)
+ES = ResidentialCollege(name='ES', img_URL='https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/EzraStilesshield.png/220px-EzraStilesshield.png', total=0)
+JE = ResidentialCollege(name='JE', img_URL='http://upload.wikimedia.org/wikipedia/en/4/4e/JonathanEdwardsshield.png', total=0)
+MC = ResidentialCollege(name='MC', img_URL='https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Morseshield.png/220px-Morseshield.png', total=0)
+PC = ResidentialCollege(name='PC', img_URL='https://upload.wikimedia.org/wikipedia/en/thumb/d/da/Piersonshield.png/220px-Piersonshield.png', total=0)
+SM = ResidentialCollege(name='SM', img_URL='https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/Sillimanshield.png/220px-Sillimanshield.png', total=0)
+SY = ResidentialCollege(name='SY', img_URL='https://upload.wikimedia.org/wikipedia/en/2/2c/Saybrook_shield.png', total=0)
+TC = ResidentialCollege(name='TC', img_URL='https://upload.wikimedia.org/wikipedia/en/thumb/4/44/Trumbullshield.png/220px-Trumbullshield.png', total=0)
+TD = ResidentialCollege(name='TD', img_URL='https://upload.wikimedia.org/wikipedia/en/5/53/Timothy_Dwight_shield.png', total=0)
+
+
+BK.save()
+BR.save()
+CC.save()
+DC.save()
+ES.save()
+JE.save()
+MC.save()
+PC.save()
+SM.save()
+SY.save()
+TC.save()
+TD.save()

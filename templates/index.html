@@ -1,0 +1,97 @@
+
+{% extends 'base.html' %}
+
+{% block body_block %}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        {% load staticfiles %}
+        <img src="{% static 'img/yaleims_logo.png' %}" class="img-responsive">
+      </div>
+      <div class="col-md-6">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>The Yale Intramurals</h1>
+        <h3>The competition for the Tyng Cup</h3>
+        <p>The Tyng Cup, a gift from George Addee, Sheldon Rose and Malcolm 
+        Aldrich is annually awarded for overall excellence to the college 
+        accumulating the greatest number of points. Presented in 1933 and 
+        awarded first to the Wright Group, it continues to spawn competitive 
+        rivalries among the colleges and encourage participation. It is the 
+        most coveted of all intramural awards.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 text-center">
+        <hr>
+      </div>
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">The Podium</h1>
+        <p class="text-center">The top 3 colleges in the competition</p>
+      </div>
+    </div>
+    <div class="row">
+      
+          <!--print the symbols, the names and the positions of the 3 colleges with the most points in the competition-->
+          {% for col in podium %}
+          
+              <div class="col-md-4"><img src="{{col.img_URL}}" style="width:250px; height:250px;" class= "center-block" img-circle img-responsive><h3 class="text-center">{{ col.name }}</h3><p class="text-center">{{forloop.counter}}</p></div>
+
+          {% endfor %}
+      
+          
+    </div>
+  </div>
+</div>
+
+ <div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">The Ranking</h1>
+        <p class="text-center">Click on your college's symbol to go to their page</p>
+      </div>
+    </div>
+  </div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <th style="text-align:center">Ranking</th>
+              <th style="text-align:center">College</th>
+              <th style="text-align:center">Total Score</th>
+            </tr>
+          </thead>
+          <tbody align="center">
+           
+           <!--print the symbol and the total score of each college in the table from the first-->
+           {% for col in colleges %}
+              
+                <tr><td>{{forloop.counter}}<a></a></td><td><a href="colleges.php?college= {{col.name}}"><img src="{{col.img_URL}}" style="width:70px;height:70px;" id="{{col.name}}" button></a></td><td align="center">{{col.total}}</a></td></tr>
+              
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
