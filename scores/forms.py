@@ -1,14 +1,14 @@
 from django import forms
 from functools import partial
 
-SPORTS = ("men_socer", "women_soccer", "men_footbal", "women_footbal")
+SPORTS = (("men_socer", 'Men Soccer'),("women_soccer", 'Women Soccer'),("men_footbal", 'Men Footbal'),("women_footbal", 'Women Football'),)
 
 DateInput = partial(forms.DateInput, {'class': 'datepicker'})
 
 
 #This is the create task form.
 class InputScores(forms.Form):
-	sport = forms.ChoiceField(choices=SPORTS, widget=forms.TextInput(attrs={'class': 'form-control', 'id':'sport', 'name':'sport'}))
+	sport = forms.ChoiceField(choices=SPORTS, widget=forms.Select(attrs={'class': 'form-control', 'name': 'sport', 'id':'sport'}))
 	date = forms.DateField(widget=DateInput())
 	BK = forms.IntegerField(widget=forms.TextInput(attrs={'class' : "form-control", 'name' : 'BK', 'type':'number'}))
 	BR = forms.IntegerField(widget=forms.TextInput(attrs={'class' : "form-control", 'name' : 'BR', 'type':'number'}))
