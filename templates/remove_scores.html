@@ -1,0 +1,63 @@
+
+{% extends 'base.html' %}
+
+{% block body_block %}
+<!-- Needs the matches, the sport_map -->
+<!-- I need to order the colleges alphabetically for the matches -->
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Remove Scores</h1>
+                <p align="center">The scores for each match follow the guidelines stated in the <a href="http://www.yale.edu/intramurals/Rules/Tyng%20Cup%20Point%20System.pdf"><u><b>Yale Intramurals Regulations</u></b></a>.</p>
+                <p align="center">The values represent the points that each college should receive in the tournment for that specific match (e.g. in a soccer match, the winner
+                receives X points).</p>
+                <p align="center">The scores for a match can be removed by clicking the match number on the left column.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <table class="table table-bordered table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Match Number</th>
+                <th>Sport</th>
+                <th>Date (YYYY-MM-DD)</th>
+                
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        
+        <!--<form action="colleges.php" method="get">-->
+        
+        <tbody id="tablebody">
+        
+        <!--print the college's shields in a table in decrescent order according to their total points-->
+        {% for match in matches %}
+        
+                <tr><td><a onclick="return removeScoresCheck(this);"href="/scores/remove?match_id={{match.id}}">Match {{forloop.counter}}</a></td><td>{{match.sport}}</td><td>{{match.date}}</td>
+                
+                {% for p in match.points_set.all %}
+                    <td>{{p.college.name}} - {{p.points}}</td>
+                {% endfor %}
+        
+        {% endfor %}
+        
+    </table>
+</div>
+
+
+{% endblock %}
