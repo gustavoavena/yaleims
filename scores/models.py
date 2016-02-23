@@ -37,18 +37,17 @@ class ResidentialCollege(models.Model):
 
 class Sport(models.Model):
 	sport = models.CharField(max_length=30)
-	competitors = models.IntegerField()
 
 
 
 class Match(models.Model):
 	sport = models.ForeignKey(Sport, related_name="matches")
+	date = models.DateField(default=date.today())
 	colleges = models.ManyToManyField(ResidentialCollege, related_name="matches", through="Points")
 
 class Points(models.Model):
 	college = models.ForeignKey(ResidentialCollege, on_delete=models.CASCADE)
 	match = models.ForeignKey(Match, on_delete=models.CASCADE)
-	date = models.DateField(default=date.today())
 	points = models.IntegerField()
 
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import scores.forms as ScoresForms
+import scores.models as ScoresModels
 
 # Create your views here.
 
@@ -11,7 +12,39 @@ def input_scores(request):
 		InputScoresForm = ScoresForms.InputScores
 		context = {'InputScoresForm' : InputScoresForm}
 		return render(request, 'input_scores.html', context)
-	# return HttpResponse('This is the input scores page.')
+	# 
+	elif request.method == 'POST':
+		form = ScoresForms.InputScores(data=request.POST)
+		if form.is_valid():
+			formData = form.cleaned_data
+			sport = ScoresModels.Sport.objects.filter(sport=formData['sport'])[0]
+			if not sport:
+				print('Creating new sport in DB: ' + formData['sport'])
+				sport = ScoresModels.Sport(sport=formData['sport'])
+				sport.save()
+			# print(formData)
+			print(formData['date'])
+			
+			match = ScoresModels.Match(sport=sport, date=formData['date'])
+			# print(match.sport, match.date)
+			match.save()
+			for col in [elem for elem in formData.keys() if elem != 'sport' and elem != 'date']:
+				if formData[col] != None:
+					try:
+						c = ScoresModels.ResidentialCollege.objects.get(name=col)
+					except:
+						print('Could not find college: ' + col)
+						return HttpResponse('Could not find college: ' + col)
+					point = ScoresModels.Points(college=c, match=match, points=int(formData[col]))
+					point.save()
+
+			print(match.colleges)
+			return HttpResponse('Success! Maybe...')
+		else:
+			print(form.errors.as_data())
+			return HttpResponse('Invalid input scores form.')	
+	else:
+		return HttpResponse('Error inputing scores.')	
 
 def remove_scores(request):
 	return HttpResponse('This is the remove scores page.')
