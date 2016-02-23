@@ -1,0 +1,12 @@
+from scores.models import *
+
+colleges = ResidentialCollege.objects.all()
+
+for col in colleges:
+	f = open('colleges_descriptions/' + col.name + '.txt', 'r')
+	desc = f.read()
+	col.description = desc
+	col.save()
+	print(col.description)
+	f.close()
+

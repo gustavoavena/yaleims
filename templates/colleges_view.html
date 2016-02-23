@@ -1,11 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block body_block %}
+
 <div class="section">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <img src="/img/colleges_pics/{{college.name}}.jpg" class="center-block img-responsive" style="width:800px;height:500px;">
+
+        {% load staticfiles %}
+        <img src="{% static ''%}img/colleges_pics/{{college.name}}.jpg" class="center-block img-responsive" style="width:800px;height:500px;">
         <h1>{{college.get_name_display}}</h1>
         <p>
-            {% include "colleges/{{college.name}}.html" %}
+            {{college.description}}
         </p>
       </div>
     </div>
@@ -31,3 +38,5 @@
     </div>
   </div>
 </div>
+
+{% endblock %}

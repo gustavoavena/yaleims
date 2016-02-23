@@ -7,6 +7,12 @@
  * Global JavaScript
  */
 
+
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+
+
 // define the number of days base on the month
 function defineDays() {
     var month = Number(document.getElementById("month").value);

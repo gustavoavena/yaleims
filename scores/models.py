@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 
 from django.contrib.auth.models import User
-from django.utils import timezone
+from datetime import date
 from django.db import models
 
 
@@ -33,6 +33,7 @@ class ResidentialCollege(models.Model):
 	name = models.CharField(max_length=2, choices=COLLEGES_CHOICES, unique=True)
 	img_URL = models.CharField(max_length=1024)
 	total = models.IntegerField()
+	description = models.TextField(default='')
 
 class Sport(models.Model):
 	sport = models.CharField(max_length=30)
@@ -47,7 +48,7 @@ class Match(models.Model):
 class Points(models.Model):
 	college = models.ForeignKey(ResidentialCollege, on_delete=models.CASCADE)
 	match = models.ForeignKey(Match, on_delete=models.CASCADE)
-	date = models.DateTimeField(default=timezone.now())
+	date = models.DateField(default=date.today())
 	points = models.IntegerField()
 
 

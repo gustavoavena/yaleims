@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Input Scores</h1>
+                <p>Input the sport, date and how many points each college has scored in the match</p>
+                <p align="center">The scores for each match follow the guidelines stated in the <a href="http://www.yale.edu/intramurals/Rules/Tyng%20Cup%20Point%20System.pdf"><u><b>Yale Intramurals Regulations</u></b></a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="input_form" action="/scores/input" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section">
+                            <div class="container">
+                                <div class="row">
+                                    {{ InputScoresForm.date }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-3 col-md-6">
+                        <div class="form-group">
+                            <select id="sport" class="form-control" name="sport">
+                                {{ InputScoresForm.sport }}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left"><img id="cl1" src="https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Berkeleyshield.png/220px-Berkeleyshield.png" alt="Berkeley" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Berkeley College</h4>
+                                    {{ InputScoresForm.BK }}
+
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl2" src="https://upload.wikimedia.org/wikipedia/en/3/30/Branford_College_shield.png" alt="Branford" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Branford College</h4>
+                                    {{ InputScoresForm.BR }}
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl3" src="https://upload.wikimedia.org/wikipedia/en/c/ce/Calhoun_College_shield.png" alt="Calhoun" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Calhoun College</h4>
+                                    {{ InputScoresForm.CC }}
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl4" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Davenportshield.png/220px-Davenportshield.png" alt="Davenport" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Davenport College</h4>
+                                    {{ InputScoresForm.DC }}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="media-list">
+                            <li class="media">
+                                <a class="pull-left"><img id="cl5" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/EzraStilesshield.png/220px-EzraStilesshield.png" alt="Ezra Stiles" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Ezra Stiles College</h4>
+                                    {{ InputScoresForm.ES }}
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl6" src="http://upload.wikimedia.org/wikipedia/en/4/4e/JonathanEdwardsshield.png" alt="Jonathan Edwards" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Jonathan Edwards College</h4>
+                                    {{ InputScoresForm.JE }}
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl7" src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Morseshield.png/220px-Morseshield.png" alt="Morse" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Morse College</h4>
+                                    {{ InputScoresForm.MC }}
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl8" src="https://upload.wikimedia.org/wikipedia/en/thumb/d/da/Piersonshield.png/220px-Piersonshield.png" alt="Pierson" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Pierson College</h4>
+                                    {{ InputScoresForm.PC }}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="media-list">
+                             <li class="media">
+                                <a class="pull-left"><img id="cl9" src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/Sillimanshield.png/220px-Sillimanshield.png" alt="Silliman" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Silliman College</h4>
+                                    {{ InputScoresForm.SM }}
+                                </div>
+                            </li>
+                             <li class="media">
+                                <a class="pull-left"><img id="cl10" src="https://upload.wikimedia.org/wikipedia/en/2/2c/Saybrook_shield.png" alt="Saybrook" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Saybrook College</h4>
+                                    {{ InputScoresForm.SY }}
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl11" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/44/Trumbullshield.png/220px-Trumbullshield.png" alt="Trumbull" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Trumbull College</h4>
+                                    {{ InputScoresForm.TC }}
+                                </div>
+                            </li>
+                            <li class="media">
+                                <a class="pull-left"><img id="cl12" src="https://upload.wikimedia.org/wikipedia/en/5/53/Timothy_Dwight_shield.png" alt="Timothy Dwight" class="college_logos"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Timothy Dwight College</h4>
+                                    {{ InputScoresForm.TD }}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" align=center>
+            <button class="btn btn-default" type="submit">
+                <span aria-hidden="true" class="glyphicon glyphicon-log-in"></span> Input scores
+            </button>
+        </div>
+        <script>
+            dataCheck();
+        </script>
+    </fieldset>
+</form>
+
+{% endblock %}
+
+
