@@ -43,21 +43,22 @@
                 <a href="media.php">Media</a>
               </li>
               
-              <li><a href="/users/login">Log In</a></li>
-
+              {% if request.user.username %}
               <li><a href="/users/logout">Log Out</a></li>
-              <li><a href="/users/register">Register</a></li>
+              {% else %}
+              <li><a href="/users/login">Log In</a></li>
+              {% endif %}
               <li>
                 <div class="btn-group btn-group-lg">
                   <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">Admin<span class="fa fa-caret-down"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="/scores/input">Input scores</a></li>
                     <li><a href="/scores/remove">Remove scores</a></li>
-                   
+                    <li><a href="/users/register">Register Users</a></li>
                   </ul>
                 </div>
               </li>
-              {% if request.user %}
+              {% if request.user.username %}
               <li><a href="/">{{request.user.username}}</a></li>
               {% endif %}
             </ul>

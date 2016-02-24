@@ -13,7 +13,7 @@ def index(request):
 	colleges = Scores.ResidentialCollege.objects.all()
 	podium = colleges[:3]
 	context = {"colleges" : colleges, "podium" : podium, "positions" : [range(1, 13)], "errors" : errors}
-	print(podium[0].name)
+	# print(podium[0].name)
 	return render(request, 'index.html', context)
 
 def create_college():

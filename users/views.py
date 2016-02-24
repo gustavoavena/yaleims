@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -15,6 +15,7 @@ import re as regex
 #I used Django's built-in authentication modules. They are simple and work great.
 
 #this function is responsible for registering users. It gets a register form from the POST request, handles the data, saves the users to the db and logs the user in.
+# @login_required(login_url='/')
 def register(request):
 	if request.method == 'GET':
 		registerForm = users.forms.RegisterForm()
@@ -32,20 +33,10 @@ def register(request):
 				return redirect('/', {'errors': 'Password and password confirmation dont match.'})
 			try: #tries to create a new user (user object) and save it to the db. It saves the new object automatically and returns an error if something goes wrong.
 				user = User.objects.create_user(username=formData['username'], password=formData['password'], first_name=formData['full_name'])
-				print(formData['residentialCollege'])
-				residentialCollege = scores.models.ResidentialCollege.objects.filter(name=formData['residentialCollege'])[0]
-				if not residentialCollege:
-					print('Error getting college from DB')
-					return HttpResponse('Error getting college from DB.')
-				newUser = users.models.AdminUser(user=user, isMaster=formData['isMaster'], residentialCollege=residentialCollege)
-				newUser.save()
 			except Exception, e: #if there is an error, I check it to see if it matches any error that should be informed to the testing script (like invalid email or duplicate email).
-				if regex.search(r'.*unique.*', str(e)):
-					errors = '?errors=Account+with+this+email+already+exists!'
-				else:
-					print('error creating user:')
-					print(e) #for debugging 
-					errors = ''
+				print('error creating user:')
+				# print(e) #for debugging 
+				errors = "?errors=" + str(e)
 				return redirect('/' + errors)
 			user = authenticate(username=formData['username'], password=formData['password']) #before using the login function to log a user in, 
 			#the authenticate function needs to be called to set some attributes in the user object and allow it to be logged in.
@@ -54,13 +45,9 @@ def register(request):
 			return redirect('/')
 		else:
 			# print(form.errors.as_data()) #for debugging.
-			if 'email' in form.errors.as_data().keys() and regex.search(r'.*Enter a valid email address.*', str(form.errors.as_data()['email'])):
-					errors = '?errors=Invalid+email+address'
-			else:
-				errors = '?errors=' + str(form.errors.as_data()[0])
+			errors = '?errors=' + str(form.errors.as_data()[0])
 			return redirect('/' + errors)
 	
-		return HttpResponse('Processing.')
 
 
 def login_user(request):
@@ -77,7 +64,6 @@ def login_user(request):
 			user = authenticate(username=formData['username'], password=formData['password'])
 			if user is not None: #if there is an user in the db and the password matches, logs the user in.
 				print('Valid user!!')
-				adminUser = users.models.AdminUser.objects.filter(user=user)[0]
 				login(request, user)
 				return redirect('/')
 			else: 
