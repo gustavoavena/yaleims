@@ -45,9 +45,6 @@
               
               {% if request.user.username %}
               <li><a href="/users/logout">Log Out</a></li>
-              {% else %}
-              <li><a href="/users/login">Log In</a></li>
-              {% endif %}
               <li>
                 <div class="btn-group btn-group-lg">
                   <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">Admin<span class="fa fa-caret-down"></span></a>
@@ -58,8 +55,9 @@
                   </ul>
                 </div>
               </li>
-              {% if request.user.username %}
-              <li><a href="/">{{request.user.username}}</a></li>
+              <li><a href="/"><b>Welcome, {{request.user.username}}</b></a></li>
+              {% else %}
+              <li><a href="/users/login">Log In</a></li>
               {% endif %}
             </ul>
           </div>

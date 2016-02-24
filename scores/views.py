@@ -42,7 +42,8 @@ def input_scores(request):
 					point.save()
 
 			print(match.colleges)
-			return HttpResponse('Success! Maybe...')
+			return redirect('/')
+			# return HttpResponse('Success! Maybe...')
 		else:
 			print(form.errors.as_data())
 			return HttpResponse('Invalid input scores form.')	
