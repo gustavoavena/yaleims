@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'splash.apps.SplashConfig',
-    'scores.apps.ScoresConfig'
+    'scores.apps.ScoresConfig',
+    'users.apps.UsersConfig'
 
 ]
 

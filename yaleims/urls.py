@@ -22,6 +22,7 @@ urlpatterns = [
     # url(r'^users/', include('users.urls')),
     url(r'^scores/', include('scores.urls')),
     url(r'^colleges/', include('colleges.urls')),
+    url(r'^users/', include('users.urls')),
     # url(r'^schedule/', include('schedule.urls')),
     # url(r'^media/', include('media.urls')),
     url(r'^admin/', admin.site.urls),
