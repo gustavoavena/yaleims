@@ -15,7 +15,7 @@ def input_scores(request):
 		InputScoresForm = ScoresForms.InputScores
 		context = {'InputScoresForm' : InputScoresForm}
 		return render(request, 'input_scores.html', context)
-	# 
+	
 	elif request.method == 'POST':
 		form = ScoresForms.InputScores(data=request.POST)
 		if form.is_valid():
@@ -25,11 +25,8 @@ def input_scores(request):
 				print('Creating new sport in DB: ' + formData['sport'])
 				sport = ScoresModels.Sport(sport=formData['sport'])
 				sport.save()
-			# print(formData)
-			print(formData['date'])
 
 			match = ScoresModels.Match(sport=sport, date=formData['date'])
-			# print(match.sport, match.date)
 			match.save()
 			for col in [elem for elem in formData.keys() if elem != 'sport' and elem != 'date']:
 				if formData[col] != None:
@@ -40,10 +37,11 @@ def input_scores(request):
 						return HttpResponse('Could not find college: ' + col)
 					point = ScoresModels.Points(college=c, match=match, points=int(formData[col]))
 					point.save()
-
-			print(match.colleges)
+					c.total += point.points
+					c.save()
+					
+			# print(match.colleges)
 			return redirect('/')
-			# return HttpResponse('Success! Maybe...')
 		else:
 			print(form.errors.as_data())
 			return HttpResponse('Invalid input scores form.')	
