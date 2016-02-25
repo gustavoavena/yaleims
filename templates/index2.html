@@ -2,11 +2,9 @@
 {% extends 'base.html' %}
 
 {% block body_block %}
-{% if errors %}
-<div class="alert alert-dismissable alert-success">
-              <strong>{{errors}}</strong>
+<div class='section' style="color:red;">
+    {{errors}}
 </div>
-{% endif %}
 <div class="section">
   <div class="container">
     <div class="row">
