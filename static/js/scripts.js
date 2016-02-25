@@ -10,7 +10,7 @@ $(document).ready(function() {
 });
 
 function redirect_after_error() {
-  $(document).ready().delay(2000).queue(function() {
+  $(document).ready().delay(3000).queue(function() {
     window.location.replace("/");  
   });
   
