@@ -1,10 +1,7 @@
 /**
  * scripts.js
  *
- * Computer Science 50
- * Yale IMs
- *
- * Global JavaScript
+ * This was the code used for the original website, written in PHP with Gabriel Simoes.
  */
 
 
