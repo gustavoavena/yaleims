@@ -20,7 +20,7 @@ def input_scores(request):
 		form = ScoresForms.InputScores(data=request.POST)
 		if form.is_valid():
 			formData = form.cleaned_data
-			sport = ScoresModels.Sport.objects.filter(sport=formData['sport'])[0]
+			sport = ScoresModels.Sport.objects.filter(sport=formData['sport'])
 			if not sport:
 				print('Creating new sport in DB: ' + formData['sport'])
 				sport = ScoresModels.Sport(sport=formData['sport'])

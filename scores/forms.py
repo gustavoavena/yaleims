@@ -9,7 +9,7 @@ DateInput = partial(forms.DateInput, {'class': 'datepicker'})
 #This is the create task form.
 class InputScores(forms.Form):
 	sport = forms.ChoiceField(choices=SPORTS, widget=forms.Select(attrs={'class': 'form-control', 'name': 'sport', 'id':'sport'}))
-	date = forms.DateField(widget=DateInput())
+	date = forms.DateField(widget=forms.DateInput(attrs={'class': 'datepicker'}))
 	BK = forms.IntegerField(required=False, widget=forms.TextInput(attrs={'class' : "form-control", 'name' : 'BK', 'type':'number'}))
 	BR = forms.IntegerField(required=False, widget=forms.TextInput(attrs={'class' : "form-control", 'name' : 'BR', 'type':'number'}))
 	CC = forms.IntegerField(required=False, widget=forms.TextInput(attrs={'class' : "form-control", 'name' : 'CC', 'type':'number'}))
