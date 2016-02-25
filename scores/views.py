@@ -25,6 +25,8 @@ def input_scores(request):
 				print('Creating new sport in DB: ' + formData['sport'])
 				sport = ScoresModels.Sport(sport=formData['sport'])
 				sport.save()
+			else:
+				sport = sport[0]
 
 			match = ScoresModels.Match(sport=sport, date=formData['date'])
 			match.save()
