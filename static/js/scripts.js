@@ -9,6 +9,14 @@ $(document).ready(function() {
     $('.datepicker').datepicker();
 });
 
+function redirect_after_error() {
+  $(document).ready().delay(2000).queue(function() {
+    window.location.replace("/");  
+  });
+  
+
+}
+
 
 // define the number of days base on the month
 function defineDays() {
