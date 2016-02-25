@@ -12,7 +12,7 @@ def index(request):
 		errors = None
 	colleges = Scores.ResidentialCollege.objects.all()
 	print(colleges)
-	colleges = colleges.order_by('total')
+	colleges = colleges.order_by('total').reverse()
 	podium = colleges[:3]
 	context = {"colleges" : colleges, "podium" : podium, "positions" : [range(1, 13)], "errors" : errors}
 	# print(podium[0].name)
