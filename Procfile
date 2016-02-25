@@ -1,0 +1,1 @@
+web: gunicorn yaleims.wsgi --log-file -
