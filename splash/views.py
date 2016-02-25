@@ -18,5 +18,3 @@ def index(request):
 	# print(podium[0].name)
 	return render(request, 'index.html', context)
 
-def create_college():
-	pass

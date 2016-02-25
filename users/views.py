@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, Permission
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 import users.forms
@@ -16,6 +17,7 @@ import re as regex
 
 #this function is responsible for registering users. It gets a register form from the POST request, handles the data, saves the users to the db and logs the user in.
 # @login_required(login_url='/')
+@staff_member_required(login_url='/users/login') #this way, only staff (or master) users, can register users.
 def register(request):
 	if request.method == 'GET':
 		registerForm = users.forms.RegisterForm()
@@ -32,12 +34,16 @@ def register(request):
 			if formData['password'] != formData['password_confirmation']: #checks if password and password confirmation match.
 				return redirect('/', {'errors': 'Password and password confirmation dont match.'})
 			try: #tries to create a new user (user object) and save it to the db. It saves the new object automatically and returns an error if something goes wrong.
-				user = User.objects.create_user(username=formData['username'], password=formData['password'], first_name=formData['full_name'])
+				if formData['isMaster']:
+					user = User.objects.create_user(username=formData['username'], password=formData['password'], first_name=formData['full_name'], is_staff=True)
+				else:
+					user = User.objects.create_user(username=formData['username'], password=formData['password'], first_name=formData['full_name'], is_staff=False)
 			except Exception, e: #if there is an error, I check it to see if it matches any error that should be informed to the testing script (like invalid email or duplicate email).
 				print('error creating user:')
 				# print(e) #for debugging 
 				errors = "?errors=" + str(e)
 				return redirect('/' + errors)
+			
 			user = authenticate(username=formData['username'], password=formData['password']) #before using the login function to log a user in, 
 			#the authenticate function needs to be called to set some attributes in the user object and allow it to be logged in.
 			login(request, user)
@@ -74,7 +80,7 @@ def login_user(request):
 			return redirect('/' + errors)
 
 
-
+@login_required(login_url='/users/login')
 def logout_user(request): #logs out the user by calling django's logout function.
 	print('User logged out!')
 	logout(request)

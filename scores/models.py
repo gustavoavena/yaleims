@@ -51,9 +51,3 @@ class Points(models.Model):
 	points = models.IntegerField()
 
 
-# Calhoun = ResidentialCollege(
-# 	name = 'CC',
-# 	img_URL = '',
-# 	total = 0
-
-# )

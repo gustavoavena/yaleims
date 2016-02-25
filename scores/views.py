@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import scores.forms as ScoresForms
 import scores.models as ScoresModels
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -9,7 +10,7 @@ SPORTS = (("men_socer", 'Men Soccer'),("women_soccer", 'Women Soccer'),("men_foo
 
 
 
-
+@login_required(login_url='/users/login')
 def input_scores(request):
 	if request.method == 'GET':
 		InputScoresForm = ScoresForms.InputScores
@@ -50,6 +51,8 @@ def input_scores(request):
 	else:
 		return HttpResponse('Error inputing scores.')	
 
+
+@login_required(login_url='/users/login')
 def remove_scores(request):
 	if 'match_id' not in request.GET.keys():
 		#render the remove_scores_view
