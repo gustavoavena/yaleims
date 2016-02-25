@@ -28,10 +28,10 @@
           </thead>
           
           <tbody>
-            <tr><td align=center> Total </td><td align=center> {# stats.total#} </td></tr>
-            {#{% for sport in college.sports %}#}
-                  <!-- <tr><td align=center> {{sport.name}} </td><td align=center>  {{sport.value}}. </td></tr> -->
-            {#{% endfor %}#}
+            <tr><td align=center> Total </td><td align=center> {{ college.total }} </td></tr>
+            {% for sport in scores %}
+                  <tr><td align=center> {{ sport.0 }} </td><td align=center>  {{ sport.1 }} </td></tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

@@ -46,7 +46,7 @@ class Match(models.Model):
 	colleges = models.ManyToManyField(ResidentialCollege, related_name="matches", through="Points")
 
 class Points(models.Model):
-	college = models.ForeignKey(ResidentialCollege, on_delete=models.CASCADE)
+	college = models.ForeignKey(ResidentialCollege, on_delete=models.CASCADE, related_name="points")
 	match = models.ForeignKey(Match, on_delete=models.CASCADE)
 	points = models.IntegerField()
 

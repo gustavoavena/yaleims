@@ -7,7 +7,10 @@ What needs to be done:
 	√ Update college's total scores after adding a match.
 	√ deploy to heroku.
 	√ Improve authentication system.
-	- Display scores for each sport in every college's homepage.
+	√ Display scores for each sport in every college's homepage.
 	- Fix the datepicker widget.
+	- Who added scores.
+	- Better error for form input.
+	- Sport names in colleges homepage.
 
 I'll work on those and keep documenting stuff here...
