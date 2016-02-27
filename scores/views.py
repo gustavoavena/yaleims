@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import scores.forms as ScoresForms
 import scores.models as ScoresModels
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 
@@ -43,11 +44,11 @@ def input_scores(request):
 					c.total += point.points
 					c.save()
 					
-			# print(match.colleges)
 			return redirect('/')
 		else:
-			print(form.errors.as_data())
-			return HttpResponse('Invalid input scores form.')	
+			for msg in form.errors.as_data().items():
+				messages.add_message(request, messages.ERROR, str(msg[0]) + ': ' + str(msg[1]))
+			return redirect('/')
 	else:
 		return HttpResponse('Error inputing scores.')	
 
@@ -64,10 +65,9 @@ def remove_scores(request):
 		try:
 			match = ScoresModels.Match.objects.get(id=id)
 		except:
-			print('Error getting match from DB.')
-			# print(match.id)
-			return HttpResponse('Error getting match with this match id from the DB.')
+			messages.add_message(request, messages.ERROR, 'Error fetching match with from database.')
+			return redirect('/')
 
 		match.delete()
-
-		return HttpResponse('Match ' + id + ' removed successfully.')
+		messages.add_message(request, messages.SUCCESS, 'Match removed successfully.')
+		return redirect('/')

@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from django.contrib import messages
 from scores.models import ResidentialCollege
 
-# Create your views here.
 
 def get_score_by_sport(points):
 	scores = {}
-
 	for p in points:
 		sport = p.match.sport.sport
 		print(sport)
@@ -19,11 +17,12 @@ def get_score_by_sport(points):
 	return scores
 
 def college_homepage(request):
-	# return HttpResponse('Colleges page!')
 	if request.method != 'GET':
-		HttpResponse('Wrong method')
+		messages.add_message(request, messages.ERROR, 'You did something wrong... To access a college\'s homepage, click its icon.')
+		return redirect('/')
 	else :
 		if 'college' not in request.GET.keys():
+			messages.add_message(request, messages.ERROR, 'You did something wrong... To access a college\'s homepage, click its icon.')
 			return redirect('/')
 		college = request.GET['college']
 		College = ResidentialCollege.objects.get(name=college)
@@ -36,6 +35,4 @@ def college_homepage(request):
 		print(ordered_scores)
 		context = {'college' : College, 'scores' : ordered_scores}
 		return render(request, 'colleges_view.html', context)
-		# return HttpResponse(College.get_name_display())
 
-	return HttpResponse('Colleges page!')
