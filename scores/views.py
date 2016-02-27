@@ -54,18 +54,13 @@ def input_scores(request):
 
 @login_required(login_url='/users/login')
 def remove_scores(request):
-	if 'match_id' not in request.GET.keys():
-		#render the remove_scores_view
+	if 'match_id' not in request.GET.keys(): #render the remove_scores_view
 		matches = ScoresModels.Match.objects.all()
-		print(dict(SPORTS))
 		context = {'matches' : matches}
-		# for match in matches:
-		# 	match.colleges = match.colleges.order_by('name')
 		return render(request, 'remove_scores.html', context)
-		# return HttpResponse('No match id. You need a match id.')
 	else:
 		id = request.GET['match_id']
-		print(id)
+		# print(id)
 		try:
 			match = ScoresModels.Match.objects.get(id=id)
 		except:

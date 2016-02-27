@@ -8,8 +8,8 @@ from django.db import models
 
 # Create your models here.
 
-
-SPORTS = ("men_socer", "women_soccer", "men_footbal", "women_footbal")
+#no need to use ugly names, I can use the normal one.
+SPORTS = (("men_socer", 'Men Soccer'),("women_soccer", 'Women Soccer'),("men_footbal", 'Men Footbal'),("women_footbal", 'Women Football'),)
 
 COLLEGES_CHOICES = (
 	('BK', 'Berkeley College'),
