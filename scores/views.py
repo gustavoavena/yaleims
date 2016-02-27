@@ -38,12 +38,14 @@ def input_scores(request):
 						c = ScoresModels.ResidentialCollege.objects.get(name=col)
 					except:
 						print('Could not find college: ' + col)
-						return HttpResponse('Could not find college: ' + col)
+						messages.add_message(request, messages.ERROR, 'Could not find college: ' + str(col))
+						return redirect('/')
 					point = ScoresModels.Points(college=c, match=match, points=int(formData[col]))
 					point.save()
 					c.total += point.points
 					c.save()
-					
+
+			messages.add_message(request, messages.SUCCESS, 'Scores added successfully.')	
 			return redirect('/')
 		else:
 			for msg in form.errors.as_data().items():
@@ -61,11 +63,10 @@ def remove_scores(request):
 		return render(request, 'remove_scores.html', context)
 	else:
 		id = request.GET['match_id']
-		# print(id)
 		try:
 			match = ScoresModels.Match.objects.get(id=id)
 		except:
-			messages.add_message(request, messages.ERROR, 'Error fetching match with from database.')
+			messages.add_message(request, messages.ERROR, 'Error fetching this match from the database.')
 			return redirect('/')
 
 		match.delete()
